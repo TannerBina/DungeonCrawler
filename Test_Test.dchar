@@ -1,0 +1,19 @@
+$name Test
+$playername Test
+$level 1
+$exp 0
+$gold 0
+$race Dragonborn
+$class Barbarian
+$stats 16 16 13 13 16 9
+$background Charlatan
+$alignment True Neutral
+$hitpoints 13
+$currenthitpoints 13
+$basehitpoints 10
+$backstory This is my backstory.....
+$proficiencies prof1, prof2
+$languages lang1, lang2
+$equipment equip1, equip2, equip3
+$traits trait1, trait2, trait3
+$feats feat1, feat2, feat3, feat4

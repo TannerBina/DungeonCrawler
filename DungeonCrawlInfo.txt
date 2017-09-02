@@ -1,0 +1,11 @@
+This document provides information on what Dungeon Crawler offers currently and its final goals.
+
+Last Updated : May 2, 2017
+
+Current Features
+Player Features
+An implemented character creation and saving system, which allows the creation of dnd 5e characters with stat rolling, stat and background based skill levels, and classes implemented. Uses a trust based system for addition of armors, weapons, equipment, feats, spells and traits.
+An informational interface for the players which provides information about current health, level, other players in the game with them, armor, equipment, weapons, spells, spell slots, and feats, as well as a way to chat with the dungeon master and other players, type simple commands, and information about the environment the player is in.
+Supports simple command inputs for getting description of objects with an implemented inference engine which allows for mistaken typos with corrections.
+
+Dungeon Master Features

@@ -1,0 +1,4 @@
+May 2 2017
+Uncommented Java - 4,829 Lines
+Uncommented Javafx - 2,188 Lines
+Uncommented Total - 7,017 Lines

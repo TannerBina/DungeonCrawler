@@ -1,0 +1,74 @@
+#Descriptions
+# the hashtag is for comments
+# ! is for predetermined commands and attributes such as IMPORT and STAGES, etc.
+# <> surround parameters of a command
+# [] surround each individual element of the parameters
+# ? is for definitions of an objects
+# {} surrounds the definition of an object
+
+#dungeon files must have a stages command at the beginning, with definitions after
+#at the end of the file a start command can be placed to determine which stage it will start at. Otherwise it will begin with the first defined stage
+#import command allows any object to be used without definition that is define in the input file.
+
+#import the environment objects from the data file
+#must be done before using any objects in this
+!IMPORT <objs.ddata>
+#monsters or attacks do not need imports as they are imported in other ddata files
+!IMPORT <enc.ddata>
+
+#must declare stages before defining them to allow for links between stages.
+!STAGES <[entryRoom] [hallway] [cellar]>
+
+   #definition for entryRoom
+?entryRoom {
+	#name of the stage
+	!NAME <Entry Room> #comments can go at the end of a line as well.
+
+	#description of the room
+	!DES <You enter a huge stone room. Walls stretch unbelievable far above you fading to darkness before you can see a ceiling. You hear a faint dripping as some unknown liquid falls from the ceiling and spashes into puddles on the floor. Various old pieces of furniture are scattered around the room and one corner is piled high with boxes. The only door in the room is directly across from you. 
+	In the middle of the room stands a menacing suit of armor. Red orbs of hate burning in its dark helmet.>
+
+	#links to other rooms
+	!LINKS <[hallway]>
+
+	!ENCS <entryRoomEncounter>
+
+	#objects within the room
+	!OBJS <[oldSofa][decayingChairs][pileOfCrates][?brokenTable{}]
+	[?brokenClock{!NAME <Broken Clock> !DES<An old clock whose wood has begun to molds. The hands are rusted and the glass shattered.>}]
+	[?oldDoor{!NAME <Old Door> !DES<An old beaten up door sits on rusty hinges across the room from you.>}]>
+
+	#substages which can be trigged by the dm.
+	!SUBSTAGES <
+		[?cratesCleared{
+			!DES <The crates fall apart as you shift them around. Pushing through the disgusting wreckage you reveal a trapdoor underneath.>
+			!OBJS <[?trapdoor{!NAME <Trap Door> !DES <A old trapdoor sits in the floor on ancient rusty hinges.>}]>
+			!LINKS <[cellar]>
+
+			!ENCS <?crateEncounter{
+				!NAME <Crate Encounter>
+				!DES <As you rummage through the crates your hand touches a slimey material. Sudden a loud shriek breaks the room as two large carrion crawlers break from the crates.>
+				!MONS<[carrionCrawler][carrionCrawler]>
+			}>
+		}]
+	>
+}
+
+#definition for hallway
+?hallway {
+	!LINKS <[entryRoom]>
+	!NAME <Hallway>
+	!DES <An ordinary hallway, the only door in it is the door you came through, the only object an old sofa.>
+	!OBJS <[oldSofa]>
+}
+
+#definition for cellar
+?cellar {
+	!Name <Cellar>
+	!DES <You climb through the trapdoor into a dimly lit square room. The walls are made of smooth seemless stone. The trapdoor swings shut with a thunk behind you. The sound seems muted in this room and even your voices sound strange. A single empty chair sits in the middle of the stone room.>
+	!OBJS <[?trapDoor2{!NAME <Trap Door> !DES <The trapdoor you climbed through minutes before now refused to budge as if something extremely heavy was placed ontop of it.>}]
+	[loneChair][?pussyCat{!NAME <Tabatha> !DES <A pussycat with giant 11 foot long teeth.>}]>
+
+}
+
+!START <entryRoom>

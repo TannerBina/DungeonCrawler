@@ -1,0 +1,22 @@
+$name Jim
+$playername Tanner Bina
+$level 1
+$exp 0
+$gold 0
+$race Dwarf
+$class Fighter
+$stats 17 15 14 11 14 10
+$background Outlander
+$alignment Neutral Good
+$hitpoints 12
+$currenthitpoints 12
+$basehitpoints 10
+$backstory This is my backstory.....
+$proficiencies simple weapons
+$languages elvish, common
+$equipment 5 torches, 100 feet of rope, one 10 foot poll, poisen
+$traits trait1, trait2, trait3
+$feats feat1, feat2, feat3, feat4
+$give weapon Iron_longsword 0 Slashing 1 d8 false
+$give armor Chainmail 14 false
+$give armor shield 2 true

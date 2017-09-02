@@ -1,0 +1,22 @@
+$name Jax
+$playername Tanner Bina
+$level 1
+$race Halfling
+$class Druid
+$stats 15 18 14 14 12 17
+$background Outlander
+$alignment Neutral Good
+$hitpoints 10
+$currenthitpoints 10
+$basehitpoints 6
+$backstory At a young age Jax was abondoned alone in the woods. He grew up in the wilds of the forest far from civilization. An innately bright child, Jax soon began to connect with the powers which flow through the wilderness, experimenting with them and growing his skills as a druid. As time past he became more adept with his power and began to explore the deeper and darker sides of nature, summoning fae and elementals from beyond this plane in the depths of the woods. One day, Jax delved too deep into the secrets held within the forest, almost being killed in the experience. Afterwards he decided he should increase his power to learn more and left the secludes of the forest where he had lived his whole life.
+$proficiencies Simple, Light Armor
+$languages Common, Halfling, Primordial, Sylvan, Druidic
+$equipment Torch, Druidic Focus, Grappling Hook, Holy Water, Water Skin, Rope
+$traits Inquisitive, Reckless, Uncivilized
+$feats Druidic, Wild Shape(Axe Beak)
+$give weapon Greatclub 0 Bludgeoning 1 d8 false
+$give weapon Javelin 0 Piercing 1 d6 true
+$give armor Hide_Armor 12 false
+$spells 0, Create Bonfire, Magic Stone, Shape Water
+$spells 1, Thunderwave, Healing Word

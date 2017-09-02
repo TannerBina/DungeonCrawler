@@ -1,0 +1,22 @@
+$name Duf
+$playername Tanner Bina
+$level 1
+$exp 0
+$gold 0
+$race Dwarf
+$class Barbarian
+$stats 17 16 14 12 14 15
+$background Soldier
+$alignment Chaotic Good
+$hitpoints 11
+$currenthitpoints 11
+$basehitpoints 8
+$backstory Although originally thought to be a savage due to his brutal fighting style, Duf quickly became a respected member of the dwarven military due to not only his strength but his wisdom, intellience, and tactical planning rare for barbarians.
+$proficiencies Light Armor, Medium Armor, Shields, Simple Weapons, Martial Weapons
+$languages Dwarvish
+$equipment Net
+$traits Reckless, Bold, Wise
+$feats Rage, Unarmored Defense
+$give weapon Greatsword 0 Slashing 2 d6 false
+$give weapon Heavy_Crossbow 0 Piercing 1 d10 true
+$give armor Half_Plate 15 false

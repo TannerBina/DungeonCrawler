@@ -1,0 +1,9 @@
+!TYPE<ENCS>
+
+!IMPORT <monsters.ddata>
+
+?entryRoomEncounter{
+	!NAME <Entry Room Encounter>
+	!DES <The suit of armor begins to move, creaking every so slightly as it turns to you, burning coals now blazing in its helm, its hand held out in challenge.>
+	!MONS <[animatedArmor]>
+}

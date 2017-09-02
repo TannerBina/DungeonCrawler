@@ -1,0 +1,19 @@
+$name 
+$playername 
+$level 1
+$exp 0
+$gold 0
+$race null
+$class null
+$stats 0 0 0 0 0 0
+$background null
+$alignment null
+$hitpoints 0
+$currenthitpoints 0
+$basehitpoints 0
+$backstory This is my backstory.....
+$proficiencies prof1, prof2
+$languages lang1, lang2
+$equipment equip1, equip2, equip3
+$traits trait1, trait2, trait3
+$feats feat1, feat2, feat3, feat4

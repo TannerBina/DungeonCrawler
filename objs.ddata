@@ -1,0 +1,25 @@
+#This is a data file
+
+#objects have two parameters, the name and the description.
+#neither are necessary. 
+#Ommited descriptions will simply say there is nothing extradoinary about the object.
+#Ommited names will be filled in with the given name of the object
+# {} are necessary
+
+!TYPE <OBJS>
+
+?pileOfCrates{
+	!NAME <Pile of Crates>
+	!DES<A large pile of crates sit here. Time has taken its toll, and so has this place. They are almost completely rotted away.>
+}
+
+?decayingChairs{
+	!NAME <Decaying Chairs>
+}
+
+?oldSofa{}
+
+?loneChair{
+	!NAME <Lone Chair>
+	!DES <An eery lone chair sits in the room. The wood of it has resisted all rot but you can tell it is ancient wood, from long before you came to this world.>
+}

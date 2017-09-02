@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="950.0"
+            xmlns="http://javafx.com/javafx/8.0.101"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.NewCharController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="950.0">
+         <children>
+            <GridPane style="-fx-border-color: black;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="10.0" prefWidth="125.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="   Character Name" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Algerian" size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="charNameFie" prefHeight="7.0" prefWidth="199.0" text="\$name">
+                     <font>
+                        <Font name="Agency FB" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="27.0" prefWidth="123.0" text="                 Class" textAlignment="RIGHT" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="clasCho" prefHeight="30.0" prefWidth="125.0" GridPane.columnIndex="2" />
+                  <Label text="                 Race" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="raceCho" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label text="     Background" GridPane.columnIndex="3">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="backCho" prefWidth="150.0" GridPane.columnIndex="4" />
+                  <ChoiceBox fx:id="aligCho" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Label text="     Alignment" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="   Player Name" GridPane.columnIndex="5">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="   Starting Level" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Algerian" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="playNameFie" text="\$playername" GridPane.columnIndex="6">
+                     <font>
+                        <Font name="Agency FB" size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="starLeveFie" editable="false" text="1" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane gridLinesVisible="true">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="235.0" minWidth="10.0" prefWidth="188.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="     Strength">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="streCho" prefWidth="150.0" />
+                        <Label fx:id="streBonLab" text="     +0" />
+                     </children></VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <Label text="     Dexterity">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="dextCho" prefWidth="150.0" />
+                        <Label fx:id="dextBonLab" text="     +0" />
+                     </children></VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                     <children>
+                        <Label text="     Constitution">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="consCho" prefWidth="150.0" />
+                        <Label fx:id="consBonLab" text="     +0" />
+                     </children></VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+                     <children>
+                        <Label text="     Intelligence">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="inteCho" prefWidth="150.0" />
+                        <Label fx:id="inteBonLab" text="     +0" />
+                     </children></VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
+                     <children>
+                        <Label text="     Wisdom">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="wisdCho" prefWidth="150.0" />
+                        <Label fx:id="wisdBonLab" text="     +0" />
+                     </children></VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5">
+                     <children>
+                        <Label text="     Charisma">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="charCho" prefWidth="150.0" />
+                        <Label fx:id="charBonLab" text="     +0" />
+                     </children></VBox>
+                  <GridPane GridPane.columnIndex="7">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="   Proficiency Bonus  " underline="true">
+                           <font>
+                              <Font name="Algerian" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="profBonLab" text="          +0" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Algerian" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <GridPane GridPane.columnIndex="6">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="101.0" minWidth="10.0" prefWidth="92.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="92.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="reroStatBut" mnemonicParsing="false" onAction="#handReroStatBut" text="Reroll Stats" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="reroHitpBut" mnemonicParsing="false" onAction="#handReroHitPBut" prefHeight="34.0" prefWidth="99.0" text="Reroll HP">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Button>
+                        <Label text=" Hitpoints" underline="true" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Algerian" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="hitpLab" text="     0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Algerian" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+            <GridPane prefHeight="462.0" prefWidth="950.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="226.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="304.0" minHeight="10.0" prefHeight="288.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane prefHeight="136.0" prefWidth="950.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="     Acrobatics     " underline="true">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Animal Handling      " underline="true" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Arcana     " underline="true" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Athletics     " underline="true" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Deception     " underline="true" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     History     " underline="true" GridPane.columnIndex="5">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="acroBonLab" text="     +0 (Dex)" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="animHandBonLab" text="     +0 (Wis)" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="arcaBonLab" text="     +0 (Int)" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="athlBonLab" text="     +0 (Str)" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="deceBonLab" text="     +0 (Char)" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="histBonLab" text="     +0 (Int)" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Insight     " underline="true" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Intimidation     " underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Investigation     " underline="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Medicine     " underline="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Nature     " underline="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Perception     " underline="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="insiBonLab" text="     +0 (Wis)" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="intiBonLab" text="     +0 (Char)" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="inveBonLab" text="     +0 (Int)" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="mediBonLab" text="     +0 (Wis)" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="natuBonLab" text="     +0 (Int)" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="percBonLab" text="     +0 (Wis)" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Performance     " underline="true" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Persuasion     " underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Religion     " underline="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Sleight of Hand     " underline="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Stealth     " underline="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="     Survival     " underline="true" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Agency FB" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="perfBonLab" text="     +0 (Char)" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="persBonLab" text="     +0 (Char)" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="reliBonLab" text="     +0 (Int)" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="sleiHandBonLab" text="     +0 (Dex)" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="steaBonLab" text="     +0 (Dex)" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="survBonLab" text="     +0 (Wis)" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <GridPane gridLinesVisible="true" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="183.0" minWidth="10.0" prefWidth="162.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="218.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <SplitPane dividerPositions="0.11" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="1">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="22.0" prefHeight="27.0" prefWidth="188.0" text=" Equipment" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <TextArea fx:id="equiAre" layoutX="-3.0" layoutY="35.0" prefHeight="249.0" prefWidth="188.0" text="\$equipment equip1, equip2, equip3" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <SplitPane dividerPositions="0.11" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="8.0" prefHeight="27.0" prefWidth="188.0" text=" Proficiencies and Languages" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <TextArea fx:id="profLangAre" prefHeight="249.0" prefWidth="188.0" text="\$proficiencies prof1, prof2                       $languages lang1, lang2" wrapText="true">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <SplitPane dividerPositions="0.11" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="2">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="25.0" prefHeight="27.0" prefWidth="188.0" text=" Weapons and Spells" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <VBox prefHeight="249.0" prefWidth="188.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <GridPane>
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="96.0" minWidth="10.0" prefWidth="88.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="81.0" minWidth="10.0" prefWidth="32.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="68.0" minWidth="10.0" prefWidth="32.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="0.0" prefWidth="28.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="1.0" prefWidth="35.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="   Name">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="# Dice" GridPane.columnIndex="2">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="   Die" GridPane.columnIndex="3">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="17.0" prefWidth="53.0" text=" Finess" GridPane.columnIndex="4">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Type" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ChoiceBox fx:id="weap1TypeCho" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <ChoiceBox fx:id="weap2TypeCho" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <ChoiceBox fx:id="weap2NumbDiceCho" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                                <ChoiceBox fx:id="weap2DieCho" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <CheckBox fx:id="weap2FineChe" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                                <ChoiceBox fx:id="weap3TypeCho" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <ChoiceBox fx:id="weap3NumbDiceCho" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                                <ChoiceBox fx:id="weap3DieCho" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <CheckBox fx:id="weap3FineChe" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                                <ChoiceBox fx:id="weap1NumbDiceCho" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                <ChoiceBox fx:id="weap1DieCho" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                <CheckBox fx:id="weap1FineChe" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                <TextField fx:id="weap1NameFie" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <TextField fx:id="weap2NameFie" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <TextField fx:id="weap3NameFie" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <TextField fx:id="armoNameFie" promptText="Armor Name" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <TextField fx:id="armoACFie" promptText="AC" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Label text=" Shield" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <CheckBox fx:id="shieChe" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <TextField fx:id="shieACFie" promptText="+AC" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font name="Agency FB" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                             </children>
+                                          </GridPane>
+                                          <Button fx:id="learSpelBut" mnemonicParsing="false" onAction="#handLearSpelBut" prefHeight="54.0" prefWidth="216.0" text="Learn Spells">
+                                             <font>
+                                                <Font name="Agency FB" size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="creaCharBut" mnemonicParsing="false" onAction="#handCreaCharBut" prefHeight="79.0" prefWidth="216.0" text="Create Character">
+                                             <font>
+                                                <Font name="Algerian" size="18.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <SplitPane dividerPositions="0.11" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="3">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label text=" Traits and Backstory">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <VBox layoutX="7.0" prefHeight="250.0" prefWidth="181.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <TextArea fx:id="traiAre" prefHeight="115.0" prefWidth="181.0" text="\$traits trait1, trait2, trait3" wrapText="true">
+                                             <font>
+                                                <Font name="Agency FB" size="18.0" />
+                                             </font></TextArea>
+                                          <TextArea fx:id="backAre" prefHeight="136.0" prefWidth="181.0" text="\$backstory This is my backstory....." wrapText="true">
+                                             <font>
+                                                <Font name="Agency FB" size="18.0" />
+                                             </font></TextArea>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <SplitPane dividerPositions="0.11" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnIndex="4">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="57.0" prefHeight="27.0" prefWidth="181.0" text=" Feats" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <TextArea fx:id="featAre" layoutX="-9.0" layoutY="14.0" prefHeight="249.0" prefWidth="181.0" text="\$feats feat1, feat2, feat3, feat4" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Agency FB" size="18.0" />
+                                       </font></TextArea>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+         </children></VBox>
+   </children>
+</AnchorPane>

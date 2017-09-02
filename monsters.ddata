@@ -1,0 +1,36 @@
+#type command must be first command
+!TYPE <MONS>
+
+!IMPORT <attacks.ddata>
+
+?animatedArmor{
+	#has a name.
+	!NAME <Animated Armor>
+
+	#has a description.
+	!DES <This living suit of armor stares at you with two balls of flickering flame hidden behind his helmet. You are chilled to the bone as he approaches you with mechanical movements.>
+
+	#has an armor class
+	!AC <18>
+
+	#has a hit die value
+	!HD <6d8>
+	#has a hp value total hp = hp + hd roll
+	!HP <6>
+
+	#has a level (challenge rating)
+	!LEV <1>
+	#a list of attacks. Multiple ones will be chosen randomly.
+	!ATT< [slam] >
+}
+
+?carrionCrawler{
+	!NAME <Carrion Crawler>
+	!DES <A terrifying bug-like creature with sharp teeth in its open hungry mouth and an array of tentacles which seem to reach towards you as it rears onto its multitude of legs.>
+	!AC <13>
+	!HD <6d10>
+	!HP <18>
+	!LEV <2>
+	!ATT < [?tentacles{!NAME <Tentacle> !HIT <8> !DD <1d4> !DAM <2>}]
+	[?bite{!NAME <Bite> !HIT <4> !DD <2d4> !DAM <2>}] >
+}
