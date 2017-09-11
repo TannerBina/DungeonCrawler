@@ -15,36 +15,49 @@ public class Constants {
     //only used in NewCharController for initialize
     public static boolean LEARSPELWIN = false;
 
+    //window for the dm during game
     public static final String DMWIN = "dmWindow.fxml";
+    //window for the first player
     public static final String PLAYFIRS = "playerFirst.fxml";
+    //window to create a new character
     public static final String NEWCHAR = "newChar.fxml";
+    //window to learn spells
     public static final String LEARSPEL = "learnSpells.fxml";
+    //window for the players during the game
     public static final String PLAYWIND = "playerWindow.fxml";
 
+    //list of possible alignments
     public static final ObservableList<String> ALIGOPT = FXCollections.observableArrayList(
             "Lawful Good", "Lawful Neutral", "Lawful Evil",
             "Neutral Good", "True Neutral", "Neutral Evil",
             "Chaotic Good", "Chaotic Neutral", "Chaotic Evil"
     );
+
+    //list of all weapon properties
     public static final ObservableList<String> WEAPTYPEOPT = FXCollections.observableArrayList(
             "Slashing", "Bludgeoning", "Piercing"
     );
+    //lists of die options
     public static final ObservableList<String> DIEOPT = FXCollections.observableArrayList(
             "d4", "d6", "d8", "d10", "d12", "d20", "d100"
     );
+    //list of different numbers of dice possible
     public static final ObservableList<String> NUMBDICEOPT = FXCollections.observableArrayList(
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"
     );
+    //options for each class
     public static final ObservableList<String> CLASOPT = FXCollections.observableArrayList(
             "Barbarian", "Bard", "Cleric", "Druid",
             "Fighter", "Magic_User", "Monk", "Paladin", "Ranger",
             "Sorcerer", "Thief", "Warlock"
     );
+    //options for all races
     public static final ObservableList<String> RACEOPT = FXCollections.observableArrayList(
             "Dragonborn", "Dwarf", "Elf", "Gnome",
             "Halfling", "Half_Elf", "Half_Orc",
             "Human", "Tiefling"
     );
+    //options for all backgrounds
     public static final ObservableList<String> BACKOPT = FXCollections.observableArrayList(
             "Acolyte", "Charlatan", "Criminal",
             "Entertainer", "Folk_Hero", "Guild_Artisan",
@@ -52,6 +65,7 @@ public class Constants {
             "Sailor", "Soldier", "Urchin"
     );
 
+    //number of spell slots a character has at each level
     public static final int [][] SPELL_SLOTS = new int[][]{
             {2,0,0,0,0,0,0,0,0},
             {3,0,0,0,0,0,0,0,0},
@@ -75,33 +89,40 @@ public class Constants {
             {4,3,3,3,3,2,2,1,1}
     };
 
+    //amount of exp required for each next level
     public static final int [] NEXT_LEVEL_EXP = new int[]{
             0,300,900,2700,6500,14000,23000,34000,48000,64000,
             85000,100000,120000,140000,165000,195000,225000,
             265000,305000,355000
     };
 
+    //different dice options
     enum dice {
         d4, d6, d8, d10, d12, d20, d0, d100
     }
 
+    //different class options
     enum classes{
         Barbarian, Bard, Cleric, Druid, Fighter, Magic_User, Monk,
         Paladin, Ranger, Sorcerer, Thief, Warlock
     }
 
+    //races enum
     enum races{
         Dragonborn, Dwarf, Elf, Gnome, Halfling, Half_Elf, Half_Orc, Human, Tiefling
     }
+    //background enum
     enum backgrounds{
         Acolyte, Charlatan, Criminal, Entertainer, Folk_Hero,
         Guild_Artisan, Hermit, Noble, Outlander, Sage, Sailor,
         Soldier, Urchin
     }
+    //weapon types enum
     enum weapontypes {
         Slashing, Bludgeoning, Piercing
     }
 
+    //gets a boolean that a string represents
     public static boolean getBoolean(String s){
         switch (s){
             case "true":
@@ -115,6 +136,7 @@ public class Constants {
         return false;
     }
 
+    //gets the die in a given string
     public static dice getDie(String s){
         dice res = null;
         switch (s){
@@ -150,6 +172,7 @@ public class Constants {
         return res;
     }
 
+    //gets the weapon types based on the inputted string
     public static weapontypes getWeaponType(String s){
         if (s == null) return null;
         s = s.toLowerCase();
@@ -172,6 +195,7 @@ public class Constants {
         return res;
     }
 
+    //get the class based on a matching inputted string
     public static classes getClass(String s){
         if (s == null) return null;
 
@@ -219,6 +243,7 @@ public class Constants {
         return res;
     }
 
+    //gets the ace based on a matching string
     public static races getRace(String s){
         if (s == null){
             return null;
@@ -261,6 +286,7 @@ public class Constants {
         return res;
     }
 
+    //gets the bacground as a matching string
     public static backgrounds getBack(String s) {
         if (s == null) return null;
         s = s.toLowerCase();
@@ -309,6 +335,7 @@ public class Constants {
         return res;
     }
 
+    //rolls a die a set number of times and takes the top rolls from a specific number of them
     public static int rollDice(dice die, int numRolled, int numUsed){
         int[] tot = new int[numRolled];
         for (int i = 0; i < numRolled; i++){
@@ -322,6 +349,7 @@ public class Constants {
         return sum;
     }
 
+    //roll a die and only keep the ones that are over half the dies max roll
     public static int rollHalfUpDice(dice die, int sides, int numRolled, int numUsed){
         int[] tot = new int[numRolled];
         for (int i = 0; i < numRolled; i++){
@@ -339,6 +367,7 @@ public class Constants {
         return sum;
     }
 
+    //roll a single die
     public static int roll(dice die){
         Random r = new Random();
         switch (die){
@@ -364,6 +393,7 @@ public class Constants {
         return -1;
     }
 
+    //get the hit die for a class
     public static dice getHitD(classes clas){
         dice res = dice.d8;
 
@@ -413,6 +443,7 @@ public class Constants {
         return res;
     }
 
+    //get the stat bonuses for a given race
     public static int[] getStatBonArr(races race){
         int[] res = {0,0,0,0,0,0};
 
@@ -463,6 +494,7 @@ public class Constants {
         return res;
     }
 
+    //get the skill bonuses for a background
     public static int[] getBackBonArr(backgrounds backgrounds) {
         /*
         0-athlBon;

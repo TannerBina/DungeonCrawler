@@ -2,11 +2,15 @@ package sample;
 
 /**
  * Holds all stats for a class.
+ * As well as the bonuses for each stat
+ *
  * Created by Tanner on 2/7/2017.
  */
 public class StatHolder {
+    //the race which effect the given stats
     private Constants.races race;
 
+    //all stats and their bonuses
     private int stre;
     private int streBon;
     private int cons;
@@ -20,6 +24,9 @@ public class StatHolder {
     private int wisd;
     private int wisdBon;
 
+    /*
+    Create initally empty stat holder
+     */
     public StatHolder(){
         stre = 0;
         cons = 0;
@@ -36,9 +43,14 @@ public class StatHolder {
         wisdBon = 0;
     }
 
+    /*
+    Set the race and update all given stats
+     */
     public void setRace(Constants.races r){
+        //get the stag bonus for the current race
         int[] statBon = Constants.getStatBonArr(race);
 
+        //remove stats from the previous race
         chari -= statBon[0];
         cons -= statBon[1];
         dext -= statBon[2];
@@ -46,9 +58,11 @@ public class StatHolder {
         stre -= statBon[4];
         wisd -= statBon[5];
 
+        //get new race stat bonuses
         statBon = Constants.getStatBonArr(r);
         race = r;
 
+        //update stats
         chari += statBon[0];
         cons += statBon[1];
         dext += statBon[2];
@@ -56,10 +70,15 @@ public class StatHolder {
         stre += statBon[4];
         wisd += statBon[5];
 
+        //set all bonuses
         setAllBons();
     }
 
+    /*
+    Set all to given stats to the inputted value, uses current race value
+     */
     public void setAll(int[] stats){
+        //try to set all stats to the entered stats than update bonuses
         try{
             stre = stats[0];
             cons = stats[1];
@@ -67,12 +86,16 @@ public class StatHolder {
             inte = stats[3];
             chari = stats[4];
             wisd = stats[5];
+            setRace(race);
             setAllBons();
         } catch (IndexOutOfBoundsException e){
             System.err.println("Input array to set all stats incorrect length");
         }
     }
 
+    /*
+    Set all bonuses for the stats
+     */
     private void setAllBons(){
         streBon = getBon(stre);
         consBon = getBon(cons);

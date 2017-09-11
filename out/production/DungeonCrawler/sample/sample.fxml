@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="340.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.101"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox fx:id="welcomeBox" prefHeight="340.0" prefWidth="400.0">
+         <children>
+            <Label prefHeight="100.0" prefWidth="400.0" style="-fx-border-color: black; -fx-border-radius: 3;" text="   Welcome to Dungeon Cralwer" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Algerian" size="24.0" />
+               </font>
+            </Label>
+            <Button fx:id="playBut" mnemonicParsing="false" onAction="#handPlayBut" prefHeight="120.0" prefWidth="400.0" text="I'm a Player">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font></Button>
+            <Button fx:id="dmBut" mnemonicParsing="false" onAction="#handDMBut" prefHeight="120.0" prefWidth="400.0" text="I'm a Dungeon Master">
+               <font>
+                  <Font name="Agency FB" size="24.0" />
+               </font></Button>
+         </children></VBox>
+   </children>
+</AnchorPane>

@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Parses commands from text
+ * Parses commands from a line of text
  *
  * Created by Tanner on 2/14/2017.
  */
 public class CommandParser {
 
+    /*
+    Takes in a string which can contain multiple commands
+    returns a command wih all args
+     */
     public static ArrayList<Command> parseCommands(String string){
         StringBuilder sb = new StringBuilder();
-        Scanner s = new Scanner(string);
+
+        //create scanner from string
+        Scanner s = new Scanner(string.trim());
         ArrayList<Command> result = new ArrayList<>();
 
+        //check if first is a valid command
         String next = s.next();
         if (next.charAt(0) != '$' && next.charAt(0) != '@'){
             System.err.println("Not valid command form.");
@@ -23,11 +30,15 @@ public class CommandParser {
         sb.append(next);
         sb.append(" ");
 
+        //parse through each adding each to a string builder as long as they are not seperate commands
         while (s.hasNext()){
             next = s.next();
-            if (next.charAt(0) != '$'){
+            //if its not a new command add more as args
+            if (next.charAt(0) != '$' || next.charAt(0) != '@'){
                 sb.append(next);
                 sb.append(" ");
+
+                //else parse the given command
             } else {
                 result.add(parseCommand(sb.toString()));
                 sb = new StringBuilder();
@@ -35,19 +46,25 @@ public class CommandParser {
                 sb.append(" ");
             }
         }
+        //add and return resulting commands
         result.add(parseCommand(sb.toString()));
 
         return result;
     }
 
+    /*
+    Parse a single command from a string
+     */
     public static Command parseCommand(String string){
         Command res = null;
         Command.commands command = null;
         ArrayList<String> args = new ArrayList<>();
 
-        Scanner s = new Scanner(string);
+        //input into a scanner
+        Scanner s = new Scanner(string.trim());
         String com = s.next();
 
+        //make sure its command form
         if (com.charAt(0) != '$' && com.charAt(0) != '@'){
             System.err.println("Not valid command form. Command: " + com);
             return res;
@@ -197,19 +214,27 @@ public class CommandParser {
         return res;
     }
 
+    /*
+    Parse a set of args from a scanner given the number of args and a deliminator to use
+     */
     private static ArrayList<String> parseArgs(Scanner s, int numArgs, String deliminator){
         ArrayList<String> res = new ArrayList<>();
 
+        //set the deliminator
         if (deliminator != null){
             s.useDelimiter(deliminator);
         }
 
+        //handle each set of args
         switch (numArgs){
+            //if 0 then its an infinite number of args / undefined
             case 0:
                 while(s.hasNext()){
                     res.add(s.next().trim());
                 }
                 break;
+
+            //if its one just keep adding to that one args
             case 1:
                 StringBuilder sb = new StringBuilder();
                 while(s.hasNext()){
@@ -218,6 +243,8 @@ public class CommandParser {
                 }
                 res.add(sb.toString().trim());
                 break;
+
+            //default is the same as 0
             default:
                 while (s.hasNext()){
                     res.add(s.next().trim());

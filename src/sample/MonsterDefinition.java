@@ -3,20 +3,33 @@ package sample;
 import java.util.ArrayList;
 
 /**
- * A monster
+ * The definition of a monster.
+ * Used to create individual instances
+ * of monsters.
  * Created by Tanner on 5/3/2017.
  */
 public class MonsterDefinition {
+
+    //id name and description of the definition
     private String id;
     private String name;
     private String description;
+    //armor class
     private int ac;
+    //number of hit dice
     private int numDie;
+    //hit point bonus
     private int hp;
+    //the dice used for hd
     private Constants.dice die;
+
+    //level and attacks
     private int level;
     private ArrayList<Attack> attacks;
 
+    /*
+    Creates a monster definition with given parameters
+     */
     public MonsterDefinition(String id, String name, String description, String ac,
                              String hd, String hp, String level, ArrayList<Attack> attacks){
         this.id = id;
@@ -30,7 +43,14 @@ public class MonsterDefinition {
         this.attacks = attacks;
     }
 
+    /*
+    Creates a monster from the definition.
+    Inputted a list of previously created monsters to avoid
+    name duplication
+     */
     public Monster createMonster(ArrayList<Monster> created){
+        //set count for numbers of same monsters
+        //already created
         int count = 1;
         for (int i = 0; i < created.size(); i++){
             if (created.get(i).getId().equals(id)){
@@ -38,12 +58,17 @@ public class MonsterDefinition {
             }
         }
 
+        //gets the total hit points the monster has
         int totHp = Constants.rollDice(die, numDie, numDie) + hp;
 
+        //returns the new monster instance
         return new Monster(id, (name + " " + count), description,
                 ac, totHp, level, attacks);
     }
 
+    /*
+    returns the monster as a string
+     */
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("ID : " + id + '\n');

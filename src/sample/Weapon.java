@@ -3,17 +3,29 @@ package sample;
 import java.io.PrintWriter;
 
 /**
- * Holds a weapon
+ * Holds a weapon that can be used
+ * in combat by a pc
+ *
  * Created by Tanner on 1/30/2017.
  */
 public class Weapon {
+    //the weapon damage type
     private Constants.weapontypes type;
+
+    //the die that is used for the weapon
     private Constants.dice die;
+    //number of dice rolled for the weapon
     private int numDie;
+    //the name
     private String name;
+    //any magic bonuses
     private int bonus;
+    //whether it is a finess weapon or not
     private boolean fine;
 
+    /*
+    Creates a populated weapon with inputted params
+     */
     public Weapon(String name, int bonus, Constants.weapontypes type, int numDie, Constants.dice die, boolean fine){
         this.die = die;
         this.numDie = numDie;

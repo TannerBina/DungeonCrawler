@@ -29,60 +29,53 @@ public class SkillHolder {
     private int perfBon;
     private int persBon;
 
+
+    /*
+    Creates a skill holder from the given background and stats
+     */
     public SkillHolder(StatHolder sh, Constants.backgrounds backgrounds){
-        int[] bons = Constants.getBackBonArr(backgrounds);
-
-        athlBon = sh.getStreBon() + bons[0];
-
-        acroBon = sh.getDextBon()+ bons[1];
-        sleiHandBon = sh.getDextBon()+ bons[2];
-        steaBon = sh.getDextBon()+ bons[3];
-
-        arcaBon = sh.getInteBon()+ bons[4];
-        histBon = sh.getInteBon()+ bons[5];
-        inveBon = sh.getInteBon()+ bons[6];
-        natuBon = sh.getInteBon()+ bons[7];
-        reliBon = sh.getInteBon()+ bons[8];
-
-        animHandBon = sh.getWisdBon()+ bons[9];
-        insiBon = sh.getWisdBon()+ bons[10];
-        mediBon = sh.getWisdBon()+ bons[11];
-        percBon = sh.getWisdBon()+ bons[12];
-        survBon = sh.getWisdBon()+ bons[13];
-
-        deceBon = sh.getCharBon()+ bons[14];
-        intiBon = sh.getCharBon()+ bons[15];
-        perfBon = sh.getCharBon()+ bons[16];
-        persBon = sh.getCharBon()+ bons[17];
+        update(sh, backgrounds);
     }
 
+    /*
+    Update the current stat holder with the given stat holder and backgrounds
+     */
     public void update(StatHolder sh, Constants.backgrounds backgrounds){
+        //get the bonus for the background
         int[] bons = Constants.getBackBonArr(backgrounds);
 
+        //set strength type skills
         athlBon = sh.getStreBon() + bons[0];
 
+        //set dext type skills
         acroBon = sh.getDextBon()+ bons[1];
         sleiHandBon = sh.getDextBon()+ bons[2];
         steaBon = sh.getDextBon()+ bons[3];
 
+        //set inte skills
         arcaBon = sh.getInteBon()+ bons[4];
         histBon = sh.getInteBon()+ bons[5];
         inveBon = sh.getInteBon()+ bons[6];
         natuBon = sh.getInteBon()+ bons[7];
         reliBon = sh.getInteBon()+ bons[8];
 
+        //set wisd skills
         animHandBon = sh.getWisdBon()+ bons[9];
         insiBon = sh.getWisdBon()+ bons[10];
         mediBon = sh.getWisdBon()+ bons[11];
         percBon = sh.getWisdBon()+ bons[12];
         survBon = sh.getWisdBon()+ bons[13];
 
+        //set char skills
         deceBon = sh.getCharBon()+ bons[14];
         intiBon = sh.getCharBon()+ bons[15];
         perfBon = sh.getCharBon()+ bons[16];
         persBon = sh.getCharBon()+ bons[17];
     }
 
+    /*
+    Create an empty skill holder with all skill bonuses init to 0
+     */
     public SkillHolder(){
         athlBon = 0;
         acroBon = 0;

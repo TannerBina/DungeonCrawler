@@ -3,17 +3,28 @@ package sample;
 import java.util.ArrayList;
 
 /**
- * A monster
+ * An instance of a monster definition
+ * that can populate encounters in the
+ * dungeons
  * Created by Tanner on 5/3/2017.
  */
 public class Monster extends Combatant{
+    //the id and description of the monster
     private String id;
     private String description;
+
+    //armor class and hit points
     private int ac;
     private int hp;
+
+    //monsters level, dictates exp given and difficulty
     private int level;
+    //list of attacks a monster can make
     private ArrayList<Attack> attacks;
 
+    /*
+    A monster with the inputted parameters.
+     */
     public Monster(String id, String name, String description, int ac, int hp, int level, ArrayList<Attack> attacks) {
         this.id = id;
         this.name = name;
@@ -24,6 +35,9 @@ public class Monster extends Combatant{
         this.attacks = attacks;
     }
 
+    /*
+    A monster with no given parameters
+     */
     public Monster() {
         id = "";
         name = "";
@@ -34,6 +48,9 @@ public class Monster extends Combatant{
         attacks = null;
     }
 
+    /*
+    Returns the string associated with the monster
+     */
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("ID : " + id + '\n');

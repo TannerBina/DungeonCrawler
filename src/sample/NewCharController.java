@@ -21,46 +21,59 @@ import java.util.ResourceBundle;
 
 /**
  * Controls the new character screen
+ * Used for creating a character file
  * Created by Tanner on 1/30/2017.
  */
 public class NewCharController {
 
+    //the static character that is being created
     private static Character newChar;
 
     public NewCharController(){
 
     }
 
+    /*
+    Iniatlize all the tabs for character creation
+     */
     @SuppressWarnings("unchecked")
     @FXML
     private void initialize(){
+        //if there isnt a new character create one
         if (newChar == null){
             newChar = new Character();
         }
+        //if its not the learn spell window being init
         if (!Constants.LEARSPELWIN) {
+            //add class options
             clasCho.getItems().addAll(Constants.CLASOPT);
             clasCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
                         public void changed(ObservableValue<? extends Number> observable,
                                             Number oldValue, Number newValue) {
+                            //update the class as well as the hitpoints
                             newChar.setClas(Constants.getClass((String) clasCho.getItems().get((Integer) newValue)));
                             hitpLab.setText("     " + ((Integer) newChar.getHitP()).toString());
                         }
                     });
 
+            //add race options
             raceCho.getItems().addAll(Constants.RACEOPT);
             raceCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
                         public void changed(ObservableValue<? extends Number> observable,
                                             Number oldValue, Number newValue) {
+                            //update race, stats, and skills
                             newChar.setRace(Constants.getRace((String) raceCho.getItems().get((Integer) newValue)));
                             setStatLabs();
                             setSkilLabs();
                         }
                     });
 
+
+            //add alignment options
             aligCho.getItems().addAll(Constants.ALIGOPT);
             aligCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
@@ -71,17 +84,20 @@ public class NewCharController {
                         }
                     });
 
+            //add background options
             backCho.getItems().addAll(Constants.BACKOPT);
             backCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
                         public void changed(ObservableValue<? extends Number> observable,
                                             Number oldValue, Number newValue) {
+                            //update skills
                             newChar.setBack(Constants.getBack((String) backCho.getItems().get((Integer) newValue)));
                             setSkilLabs();
                         }
                     });
 
+            //init all weapon choice lists
             weap1DieCho.getItems().addAll(Constants.DIEOPT);
             weap1NumbDiceCho.getItems().addAll(Constants.NUMBDICEOPT);
             weap1TypeCho.getItems().addAll(Constants.WEAPTYPEOPT);
@@ -91,12 +107,16 @@ public class NewCharController {
             weap3DieCho.getItems().addAll(Constants.DIEOPT);
             weap3NumbDiceCho.getItems().addAll(Constants.NUMBDICEOPT);
             weap3TypeCho.getItems().addAll(Constants.WEAPTYPEOPT);
+
+            //roll stat dice
             ObservableList<Integer> allPosStats = FXCollections.observableArrayList();
             for (int i = 0; i < 6; i++) {
-                allPosStats.add(Constants.rollHalfUpDice(Constants.dice.d6, 6, 3, 3));
+                allPosStats.add(Constants.rollDice(Constants.dice.d6, 4, 3));
             }
+            //update stat choice lists
             updaStatChoi(allPosStats);
 
+            //add strength choice
             streCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
@@ -104,6 +124,7 @@ public class NewCharController {
                                             Number oldValue, Number newValue) {
 
                             try {
+                                //edit skills and stats
                                 newChar.setStre((Integer) streCho.getItems().get((Integer) newValue));
                                 setSkilLabs();
                                 setStatLabs();
@@ -113,6 +134,7 @@ public class NewCharController {
                         }
                     });
 
+            //add inteligence choices
             inteCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
@@ -120,6 +142,7 @@ public class NewCharController {
                                             Number oldValue, Number newValue) {
 
                             try {
+                                //update skills and stats
                                 newChar.setInte((Integer) inteCho.getItems().get((Integer) newValue));
                                 setSkilLabs();
                                 setStatLabs();
@@ -129,6 +152,7 @@ public class NewCharController {
                         }
                     });
 
+            //add intelligence choice
             dextCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
@@ -144,6 +168,7 @@ public class NewCharController {
                         }
                     });
 
+            //add wisdom choice
             wisdCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
@@ -159,6 +184,7 @@ public class NewCharController {
                         }
                     });
 
+            //add charisma choice
             charCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
@@ -174,6 +200,7 @@ public class NewCharController {
                         }
                     });
 
+            //add const choice
             consCho.getSelectionModel().selectedIndexProperty()
                     .addListener(new ChangeListener<Number>() {
                         @Override
@@ -191,6 +218,7 @@ public class NewCharController {
                         }
                     });
         } else {
+            //if its the spell tab then init all slot labels
             leve1SlotLab.setText(leve1SlotLab.getText().replace("0", ((Integer)(newChar.spellbook.getSpellSlots(1))).toString()));
             leve2SlotLab.setText(leve2SlotLab.getText().replace("0", ((Integer)(newChar.spellbook.getSpellSlots(2))).toString()));
             leve3SlotLab.setText(leve3SlotLab.getText().replace("0", ((Integer)(newChar.spellbook.getSpellSlots(3))).toString()));
@@ -203,21 +231,28 @@ public class NewCharController {
         }
     }
 
+    /*
+    Reroll the hit points for the class
+     */
     @FXML
     private void handReroHitPBut(){
         newChar.setClas(newChar.getClas());
         hitpLab.setText("     " + ((Integer)newChar.getHitP()).toString());
     }
 
+    //reroll the stats choices and update
     @FXML
     private void handReroStatBut(){
         ObservableList<Integer> allPosStats = FXCollections.observableArrayList();
         for (int i = 0; i < 6; i++){
-            allPosStats.add(Constants.rollHalfUpDice(Constants.dice.d6, 6, 3, 3));
+            allPosStats.add(Constants.rollDice(Constants.dice.d6, 4, 3));
         }
         updaStatChoi(allPosStats);
     }
 
+    /*
+    Open the learn spell window if the selected class can learn spells
+     */
     @FXML
     private void handLearSpelBut(){
         if (newChar.getSpellbook().isActivated()) {
@@ -226,6 +261,7 @@ public class NewCharController {
         }
     }
 
+    //open a new window from the given filename
     private void openNew(String filename){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filename));
@@ -241,49 +277,9 @@ public class NewCharController {
         }
     }
 
-
-    private void addStatOptiExc(ChoiceBox exclude, Object add){
-        if (exclude != streCho){
-            streCho.getItems().add(add);
-        }
-        if (exclude != inteCho){
-            inteCho.getItems().add(add);
-        }
-        if (exclude != charCho){
-            charCho.getItems().add(add);
-        }
-        if (exclude != consCho){
-            consCho.getItems().add(add);
-        }
-        if (exclude != dextCho){
-            dextCho.getItems().add(add);
-        }
-        if (exclude != wisdCho){
-            wisdCho.getItems().add(add);
-        }
-    }
-
-    private void remoStatOptiExc(ChoiceBox exclude, Object remove){
-        if (exclude != streCho){
-            streCho.getItems().remove(remove);
-        }
-        if (exclude != inteCho){
-            inteCho.getItems().remove(remove);
-        }
-        if (exclude != charCho){
-            charCho.getItems().remove(remove);
-        }
-        if (exclude != consCho){
-            consCho.getItems().remove(remove);
-        }
-        if (exclude != dextCho){
-            dextCho.getItems().remove(remove);
-        }
-        if (exclude != wisdCho){
-            wisdCho.getItems().remove(remove);
-        }
-    }
-
+    /*
+    Update the stat choices that a player can use
+     */
     private void updaStatChoi(ObservableList<Integer> posStats){
         streCho.getItems().setAll(posStats);
         inteCho.getItems().setAll(posStats);
@@ -293,6 +289,9 @@ public class NewCharController {
         dextCho.getItems().setAll(posStats);
     }
 
+    /*
+    Set all the given skill labels for a char
+     */
     private void setSkilLabs(){
         SkillHolder sh = newChar.getSkills();
 
@@ -317,6 +316,9 @@ public class NewCharController {
         persBonLab.setText("     +" + sh.getPersBon() + " (Char)");
     }
 
+    /*
+    Set all given stat labels
+     */
     private void setStatLabs(){
         streBonLab.setText("     +" + ((Integer)newChar.getStats().getStreBon()).toString());
         charBonLab.setText("     +" + ((Integer)newChar.getStats().getCharBon()).toString());
@@ -370,9 +372,13 @@ public class NewCharController {
     @FXML
     private Button learBut;
 
+    /*
+    Handle the learn spells button
+     */
     @FXML
     private void handLearBut(){
         CommandProcessor cp = new CommandProcessor(newChar, null);
+        //process the commands in each of the spell fields
         cp.processCommand(CommandParser.parseCommand(leve0SpelFie.getText()));
         cp.processCommand(CommandParser.parseCommand(leve1SpelFie.getText()));
         cp.processCommand(CommandParser.parseCommand(leve2SpelFie.getText()));
@@ -384,13 +390,18 @@ public class NewCharController {
         cp.processCommand(CommandParser.parseCommand(leve8SpelFie.getText()));
         cp.processCommand(CommandParser.parseCommand(leve9SpelFie.getText()));
 
+        //set learn spells to false and close the stage
         Constants.LEARSPELWIN = false;
         Stage stage = (Stage) learBut.getScene().getWindow();
         stage.close();
     }
 
+    /*
+    Handle the create character button
+     */
     @FXML
     private void handCreaCharBut(){
+        //process all of the commands in each given field
         CommandProcessor cp = new CommandProcessor(newChar, null);
         cp.processCommand(CommandParser.parseCommand(charNameFie.getText()));
         cp.processCommand(CommandParser.parseCommand(playNameFie.getText()));
@@ -400,7 +411,9 @@ public class NewCharController {
         cp.processCommand(CommandParser.parseCommand(backAre.getText()));
         cp.processCommand(CommandParser.parseCommand(featAre.getText()));
 
+        //check each weapon field. If given field is popualted, add weapon
         if (!weap1NameFie.getText().equals("")){
+            //build the command for a weapon
             StringBuilder command = new StringBuilder();
             command.append("$give weapon ");
             command.append(weap1NameFie.getText().replace(" ", "_") + " ");
@@ -433,7 +446,10 @@ public class NewCharController {
             command.append(weap3FineChe.isSelected());
             cp.processCommand(CommandParser.parseCommand(command.toString()));
         }
+
+        //check armor field, if populate add armor
         if (!armoNameFie.getText().equals("")){
+            //populate the given command for armor
             StringBuilder command = new StringBuilder();
             command.append("$give armor ");
             command.append(armoNameFie.getText().replace(" ", "_") + " ");
@@ -441,6 +457,7 @@ public class NewCharController {
             command.append("false");
             cp.processCommand(CommandParser.parseCommand(command.toString()));
         }
+        //check if the armor is a sheidl
         if (shieChe.isSelected()){
             StringBuilder command = new StringBuilder();
             command.append("$give armor ");
@@ -450,12 +467,17 @@ public class NewCharController {
             cp.processCommand(CommandParser.parseCommand(command.toString()));
         }
 
+        //save the new character to a dchar fiel to be loaded
         newChar.save();
 
+        //send player to the player controller and navigate to the player window
         PlayerController.player = newChar;
         naviToNew(creaCharBut, Constants.PLAYWIND);
     }
 
+    /*
+    Navigate to a new window
+     */
     private void naviToNew(Button but, String fileName){
         try {
             Stage stage = (Stage) but.getScene().getWindow();

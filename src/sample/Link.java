@@ -1,7 +1,8 @@
 package sample;
 
 /**
- * Links two environments together
+ * Links two stages together so they can be
+ * transfered between
  * Created by Tanner on 3/22/2017.
  */
 public class Link {

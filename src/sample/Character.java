@@ -10,45 +10,67 @@ import java.util.ArrayList;
  */
 public class Character {
 
+    //gold a character has on them
     private int gold;
+    //current experience a character has
     private int curExp;
+    //exp to next level for a haracter
     private int expNextLevel;
 
+    //race of a character
     private Constants.races race;
+    //background of a character
     private Constants.backgrounds back;
+    //class a character has
     private Constants.classes clas;
+    //the alignment of a character
     private String alig;
 
+    //base hit points a character has
     private int baseHP;
+    //the total hit points a character has
     private int hitP;
+    //hit points a character currently has
     private int cureHP;
+    //the hit dice a character has
     private Constants.dice hitD;
 
+    //armor class of a character with equipped items
     private int ac;
 
+    //whether the character is dead
     private boolean dead;
 
+    //level and proficiency bonus of a character
     private int level;
     private int profBon;
 
+    //stat and skill holders for a character
     private StatHolder stats;
     private SkillHolder skills;
 
+    //charcter and player name
     private String playerName;
     private String name;
 
+    //lists of proficiencies, languages, traits, feats, and equipment
     private ArrayList<String> profLis;
     private ArrayList<String> langLis;
     private ArrayList<String> traiLis;
     private ArrayList<String> featLis;
     private ArrayList<String> equiLis;
 
+    //list of weapons and armor a character has
+    //armor is equipped
     private ArrayList<Weapon> weapLis;
     private ArrayList<Armor> armoLis;
 
+    //characters backstory
     private String backstory;
 
+    //spellbook of a character
     Spellbook spellbook;
+
     /*
     Creates an empty default character
      */
@@ -120,6 +142,9 @@ public class Character {
         alig = s;
     }
 
+    /*
+    Set race, auto updates stats
+     */
     public void setRace(Constants.races r){
         race = r;
 
@@ -127,6 +152,9 @@ public class Character {
         skills.update(stats, back);
     }
 
+    /*
+    Sets backstory, auto updates skills
+     */
     public void setBack(Constants.backgrounds b){
         back = b;
         skills.update(stats, back);
@@ -142,6 +170,9 @@ public class Character {
         skills.update(stats, back);
     }
 
+    /*
+    Auto updates hit points
+     */
     public void setCons(int c){
         stats.setCons(c);
         skills.update(stats, back);
@@ -150,6 +181,9 @@ public class Character {
         cureHP = hitP;
     }
 
+    /*
+    Set dext, auto update ac with armor
+     */
     public void setDext(int d){
         stats.setDext(d);
         skills.update(stats, back);
@@ -173,8 +207,12 @@ public class Character {
         return clas;
     }
 
+    /*
+    Sets the class of a character
+     */
     public void setClas(Constants.classes c){
         clas = c;
+        //get hit die of a character
         hitD = Constants.getHitD(c);
         int sides = 6;
         switch(hitD){
@@ -191,6 +229,9 @@ public class Character {
         baseHP = Constants.rollHalfUpDice(hitD, sides, level, level);
         setCons(stats.getCons());
 
+        /*
+        Activate spell book if caster
+         */
         switch(c){
             case Bard:
             case Cleric:
@@ -217,6 +258,9 @@ public class Character {
         return cureHP;
     }
 
+    /*
+    Increase or decrease hit points by set amount
+     */
     public int addCureHP(int a) {
         cureHP += a;
         if (cureHP < 0){
@@ -245,6 +289,11 @@ public class Character {
         return playerName;
     }
 
+    /*
+    Give and equip a piece of armor to a character
+
+    TODO i dont know how equipping multiple pieces would work
+     */
     public void giveArmor(Armor res1) {
         armoLis.add(res1);
 
@@ -283,6 +332,9 @@ public class Character {
         gold = g;
     }
 
+    /*
+    Sets the level of a character, updates prof bonus for the character
+     */
     public void setLevel(int a){
         if (level <= 20) level = a;
         else level = 20;
@@ -305,6 +357,9 @@ public class Character {
         hitP = a;
     }
 
+    /*
+    Send the character as a string to another player or dm
+     */
     public String sendChar(){
         StringBuilder sb = new StringBuilder();
         sb.append("#setchar");
@@ -513,6 +568,9 @@ public class Character {
         return weapLis;
     }
 
+    /*
+    Gets the total hit bonus for the character including dex or strength
+     */
     public Integer getHitBon(Weapon wep) {
         int res = 0;
         res += wep.getBonus();
@@ -525,6 +583,9 @@ public class Character {
         return (Integer) res;
     }
 
+    /*
+    Gets the string that represent the damage the character does (dice and bonus)
+     */
     public String getDamageString(Weapon wep) {
         StringBuilder sb = new StringBuilder();
         sb.append(wep.getNumDie());

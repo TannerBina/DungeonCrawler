@@ -21,62 +21,91 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Player Controller
+ * Player Controller for handling the
+ * player screen and interactions for the player
  * Created by Tanner on 2/26/2017.
  */
 public class PlayerController {
 
+    //the character of the given player
     public static Character player;
+    //a reference to the client
     private PlayerClient pc;
+    //triggers ui updates
     public boolean updated;
+    //update timer to trigger updates
     private Timer update;
+    //the current stage
     public Stage currentStage;
 
+    /*
+    Blank initiatlizer
+     */
     public PlayerController(){
         updated = false;
     }
 
+    /*
+    send method for sending messages
+     */
     @FXML
     public void onEnterSend(ActionEvent ae){
+        //get the entry field text
         String s = enteFie.getText();
         enteFie.clear();
         if (s.length() == 0) return;
+        //if there is no player client settup
         if (pc == null){
+            //if the first char is a command car
             if (s.charAt(0) == '$'){
+                //if its a connect command, attempt to connect to server with client
                 if (s.startsWith("$connect")){
+                    //get connect address
                     Scanner scan = new Scanner(s);
                     scan.next();
                     pc = new PlayerClient(scan.next(), scan.nextInt(), commAre, player, this);
                     if (!pc.isActive()){
                         pc = null;
                     }
+
+                    //else if its clear clear the communication area
                 } else {
                     if (s.startsWith("$clear"))
                         commAre.clear();
                 }
+                //if not command just send as message
             } else {
                 commAre.appendText(player.getName() + ": " + s + '\n');
             }
         } else {
+            //if its clear clear the area
             if (s == "$clear"){
                 commAre.clear();
             }else {
+                //otherwise send to the server to handle
                 pc.send(player.getName() + ": " + s);
             }
         }
     }
 
+    /*
+    Initalization method for the player controller
+     */
     @FXML
     private void initialize(){
         update = new Timer();
 
+        //create a fixed rate update timer
         update.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(new Runnable(){
                     public void run(){
+                        //if it needs to be updated
                         if (updated){
+                            //and there is a game going
                             if (pc != null) {
+                                //update tabs for an present characters
                                 if (pc.players.size() > 0) {
                                     setTab1(pc.players.get(0).character);
                                 }
@@ -90,9 +119,11 @@ public class PlayerController {
                                     setTab4(pc.players.get(3).character);
                                 }
                             }
+                            //if the current stage isnt null, update it
                             if (currentStage != null){
                                 updateStage();
                             }
+                            //turn update flag off
                             updated = false;
                         }
                     }
@@ -100,8 +131,10 @@ public class PlayerController {
             }
         }, 0, 100);
 
+        //if the plyaer is not equal to null
         if (player != null){
             pc = null;
+            //set all necessary tabs
             setInventoryTab();
             setArmorTab();
             setWeaponsTab();
@@ -116,7 +149,11 @@ public class PlayerController {
         }
     }
 
+    /*
+    Updates the stage that is being shown
+     */
     private void updateStage() {
+        //set name and description text
         StringBuilder sb = new StringBuilder();
         sb.append(currentStage.getName());
         sb.append('\n');
@@ -124,6 +161,7 @@ public class PlayerController {
 
         enviAre.setText(sb.toString());
 
+        //get all object names and set text
         sb = new StringBuilder();
         sb.append("Objects");
         sb.append('\n');
@@ -135,6 +173,7 @@ public class PlayerController {
         }
         objeAre.setText(sb.toString());
 
+        //get the current encounter and add to encounter window
         sb = new StringBuilder();
         if (currentStage.getEncounter().getMonsters().isEmpty()){
             encoAre.setText("No Current Encounter");
@@ -148,6 +187,9 @@ public class PlayerController {
         }
     }
 
+    /*
+    Set the inventory tab with equiplist
+     */
     private void setInventoryTab() {
         StringBuilder sb = new StringBuilder();
         for (String e: player.getEquiLis()){
@@ -157,8 +199,13 @@ public class PlayerController {
         inveFie.setText(sb.toString());
     }
 
+    /*
+    Set the whole armor tab
+     */
     private void setArmorTab() {
+        //get the ac of player
         cureACLab.setText("   Current AC:" + player.getAC());
+        //if they have armor equipped add the armor to the lsit
         if (player.getArmoLis().size() > 0){
             Armor a = player.getArmoLis().get(0);
             armo1NameLab.setText("   " + a.getName());
@@ -168,6 +215,7 @@ public class PlayerController {
                 armo1ShieLab.setText("Yes");
             }
         }
+        //if they also have a shield equipped add it as well
         if (player.getArmoLis().size() > 1){
             Armor a = player.getArmoLis().get(1);
             armo1NameLab.setText("   " + a.getName());
@@ -179,8 +227,12 @@ public class PlayerController {
         }
     }
 
+    /*
+    Set the weapons tab fo reach weapon
+     */
     private void setWeaponsTab() {
         ArrayList<Weapon> w = player.getWeapLis();
+        //check if they have this weapon, add all strings
         if (w.size() > 0){
             Weapon wep = w.get(0);
             weap1NameLab.setText("   " + wep.getName());
@@ -201,6 +253,9 @@ public class PlayerController {
         }
     }
 
+    /*
+    set the skills tab for the player
+     */
     private void setSkillsTab() {
         SkillHolder sh = player.getSkills();
 
@@ -224,6 +279,10 @@ public class PlayerController {
         persBonLab.setText("+" + sh.getPersBon());
     }
 
+    /*
+    Get all the spell slots info and set the spell
+    slots tab
+     */
     private void setSpellSlots(){
         Spellbook s = player.getSpellbook();
         leve1SlotLab.setText(((Integer)s.getRemainingSlots(1)).toString()
@@ -246,9 +305,15 @@ public class PlayerController {
                 + "/" + ((Integer)s.getSpellSlots(9)).toString());
     }
 
+    /*
+    Set all spells known for the player in the spell slots
+     */
     public void setSpellsKnown(){
+        //get the spell book
         Spellbook s = player.getSpellbook();
         StringBuilder sb = new StringBuilder();
+
+        //for each level of spells get the spells known and add them to strings
         for (String spell : s.getSpellsKnown().get(0)){
             sb.append(spell);
             sb.append(", ");
@@ -339,6 +404,9 @@ public class PlayerController {
         leve9SpelFie.setText(sb.toString());
     }
 
+    /*
+    Set the whole spell tab, calls spell slots and spells knwon
+     */
     private void setSpellsTab() {
         Spellbook s = player.getSpellbook();
         if (s.isActivated()) {
@@ -347,6 +415,9 @@ public class PlayerController {
         }
     }
 
+    /*
+    Set the feats that the character knows
+     */
     private void setFeatTab(){
         StringBuilder sb = new StringBuilder();
         ArrayList<String> fl = player.getFeatLis();
@@ -357,11 +428,17 @@ public class PlayerController {
         featAre.setText(sb.toString());
     }
 
+    /*
+    Set all info on the loot tab
+     */
     private void setLootTab(){
         goldLab.setText("     " + player.getGold());
         expLab.setText("     " + player.getCurExp() + "/" + player.getExpNextLevel());
     }
 
+    /*
+    set info on the stats tab
+     */
     private void setStatTab(){
         StatHolder sh = player.getStats();
         streLab.setText("     " + sh.getStre() + " (+" + sh.getStreBon() +")");
@@ -373,6 +450,9 @@ public class PlayerController {
 
     }
 
+    /*
+    Sets the character tab info
+     */
     private void setCharTab(){
         raceLab.setText("     " + player.getRace());
         clasLab.setText("     " + player.getClas());
@@ -382,6 +462,9 @@ public class PlayerController {
         profBonLab.setText("          +" + player.getProfBon());
     }
 
+    /*
+    All javafx variables for ui
+     */
     @FXML
     private TextArea inveFie;
     @FXML
@@ -538,6 +621,10 @@ public class PlayerController {
     @FXML
     private Label expLab;
 
+    /*
+    Set the tab for a given character
+    Next 3 methods follow same layout
+     */
     private void setTab1(Character c){
         playTab1.setText(c.getName());
         playNameTab1Lab.setText(c.getPlayerName());
@@ -582,6 +669,9 @@ public class PlayerController {
         acTab4Lab.setText("" + c.getAC());
     }
 
+    /*
+    All player tab ui elements
+     */
     @FXML
     private Tab playTab2;
     @FXML

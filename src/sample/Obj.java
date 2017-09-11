@@ -1,11 +1,13 @@
 package sample;
 
 /**
- * An object in a room
+ * An object that is represented in a given
+ * area of the dungeon
  * Created by Tanner on 5/1/2017.
  */
 public class Obj {
 
+    //the id, name and description of the object
     private String id;
     private String name;
     private String description;
@@ -14,6 +16,9 @@ public class Obj {
 
     }
 
+    /*
+    Create a populated object
+     */
     public Obj(String id, String name, String description){
         this.id = id;
         this.name = name;

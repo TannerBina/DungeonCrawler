@@ -3,13 +3,18 @@ package sample;
 import java.util.ArrayList;
 
 /**
- * Processes input commands
+ * Processes input commands,
+ * Takes in stage and a user,
+ * effects the things in the stage as well as the user based on the command,
+ * stage can be null for user settup
  *
  * Created by Tanner on 2/14/2017.
  */
 public class CommandProcessor {
 
+    //user of the processor
     private Character user;
+    //stage he is currently in
     private Stage stage;
 
     public CommandProcessor(Character user, Stage e){
@@ -144,6 +149,9 @@ public class CommandProcessor {
         return prompts;
     }
 
+    /*
+    Processes a group of commands
+     */
     public void processCommands(ArrayList<Command> commands) {
         for (Command c: commands){
             processCommand(c);
