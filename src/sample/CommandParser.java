@@ -15,6 +15,7 @@ public class CommandParser {
     returns a command wih all args
      */
     public static ArrayList<Command> parseCommands(String string){
+
         StringBuilder sb = new StringBuilder();
 
         //create scanner from string
@@ -32,9 +33,10 @@ public class CommandParser {
 
         //parse through each adding each to a string builder as long as they are not seperate commands
         while (s.hasNext()){
-            next = s.next();
+            next = s.next().trim();
+
             //if its not a new command add more as args
-            if (next.charAt(0) != '$' || next.charAt(0) != '@'){
+            if (next.charAt(0) != '$' && next.charAt(0) != '@'){
                 sb.append(next);
                 sb.append(" ");
 
